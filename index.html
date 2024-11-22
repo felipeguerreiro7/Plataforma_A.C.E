@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valuation Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Valuation Calculator</h1>
+        <label for="model">Escolha o modelo:</label>
+        <select id="model" onchange="updateForm()">
+            <option value="dcf">DCF (Fluxo de Caixa Descontado)</option>
+            <option value="gordon">Gordon (Perpetuidade)</option>
+        </select>
+
+        <div id="dcf-form">
+            <h2>DCF Inputs</h2>
+            <label for="cashflows">Fluxos de caixa (separados por vírgula):</label>
+            <input type="text" id="cashflows" placeholder="Ex: 50000,60000,70000">
+            
+            <label for="discountRates">Taxas de desconto (separadas por vírgula):</label>
+            <input type="text" id="discountRates" placeholder="Ex: 10,9,8">
+
+            <label for="terminalGrowth">Taxa de crescimento perpétuo (%):</label>
+            <input type="number" id="terminalGrowth" step="0.01" placeholder="Ex: 2">
+
+            <button onclick="calculateDCF()">Calcular DCF</button>
+        </div>
+
+        <div id="gordon-form" style="display: none;">
+            <h2>Gordon Inputs</h2>
+            <label for="fcf">FCF projetado:</label>
+            <input type="number" id="fcf" placeholder="Ex: 100000">
+
+            <label for="discountRateGordon">Taxa de desconto (%):</label>
+            <input type="number" id="discountRateGordon" step="0.01" placeholder="Ex: 12">
+
+            <label for="growthRate">Taxa de crescimento (%):</label>
+            <input type="number" id="growthRate" step="0.01" placeholder="Ex: 3">
+
+            <button onclick="calculateGordon()">Calcular Gordon</button>
+        </div>
+
+        <h2 id="result"></h2>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
